@@ -16,14 +16,21 @@ const romanValueChanged = event => {
     setRomanValue(event.target.value)
 }
 
-
+const includeInvalidAlphabet = (value) => {
+    const romanArray = ["I", "IV", "V", "IX", "X","XL","L","XC","C","CD","D","CM","M"];
+    //convert string to an array
+    const valueArray = Array.from(value.toUpperCase());
+    let returnedBoolean = true;
+    valueArray.some((arr) => {
+        if(!romanArray.includes(arr)) {
+            returnedBoolean = false;
+        } 
+    })
+    return returnedBoolean;
+}
 const validateRoman = (value) => {
-    if(value){
-        const romanArray = ["I", "IV", "V", "IX", "X","XL","L","XC","C","CD","D","CM","M"];
-        //convert string to an array
-        const valueArray = Array.from(value.toUpperCase());
-    
-        if((typeof value !== 'string' || !valueArray.some( v => romanArray.includes(v)))) {
+    if(value){   
+        if(typeof value !== 'string' || !includeInvalidAlphabet(value)) {
             return true;
         }
         return false;
@@ -73,10 +80,10 @@ const responseClass = apiError ? 'api-result-errort' : 'api-result';
         ) : (
             <div className={arabicClass}>
               <label htmlFor="name">Roman Numeral to Arabic Numeral</label>
-              {hasError && <p className="error-text">Invalid Roman Numeral</p>}
+              {hasError && <p className="error-text" id="romanError">Invalid Roman Numeral</p>}
               <input
                 type="text"
-                id="name"
+                id="romanValue"
                 onChange={romanValueChanged}
                 onFocus={onFocusRoman}
               //   onBlur={onBlurArabic}
@@ -84,7 +91,7 @@ const responseClass = apiError ? 'api-result-errort' : 'api-result';
                 />
               <div>
               {apiResponse && <p className={responseClass}>{apiResponse}</p>}
-              <button onClick={submitRequest} disabled={romanFocused ? isRomanValid : true} className="button">Submit</button>
+              <button id="submitRoman" onClick={submitRequest} disabled={romanFocused ? isRomanValid : true} className="button">Submit</button>
               </div>
             </div>
         )}

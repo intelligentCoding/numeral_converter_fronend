@@ -19,13 +19,23 @@ const validate = (req, res, next) => {
     next();
 }
 
-const validateRomanNumeral = (value) => {
-    const romanArray = ["I", "IV", "V", "IX", "X","XL","L","XC","C","CD","D","CM","M"];
 
+const includeInvalidAlphabet = (value) => {
+    const romanArray = ["I", "IV", "V", "IX", "X","XL","L","XC","C","CD","D","CM","M"];
     //convert string to an array
     const valueArray = Array.from(value.toUpperCase());
+    let returnedBoolean = true;
+    valueArray.some((arr) => {
+        if(!romanArray.includes(arr)) {
+            returnedBoolean = false;
+        } 
+    })
+    return returnedBoolean;
+}
 
-    if((typeof value !== 'string' || !valueArray.some( v => romanArray.includes(v)))) {
+const validateRomanNumeral = (value) => {
+
+    if((typeof value !== 'string' || !includeInvalidAlphabet(value))) {
         throw new HttpError('Invalid Roman Numeral entered', 400);
     }
 }

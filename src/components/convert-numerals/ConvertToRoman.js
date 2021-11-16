@@ -65,10 +65,10 @@ const responseClass = apiError ? 'api-result-errort' : 'api-result';
         ) : (
             <div className={arabicClass}>
               <label htmlFor="name">Arabic Numeral to Roman Numeral</label>
-              {hasError && <p className="error-text">Arabic Numeral Must be between 0 - 3999</p>}
+              {hasError && <p className="error-text" id="arabicError">Arabic Numeral Must be between 0 - 3999</p>}
               <input
                 type="text"
-                id="name"
+                id="ArabicValue"
                 onChange={arabicValueChanged}
                 onFocus={onFocusArabic}
               //   onBlur={onBlurArabic}
@@ -76,7 +76,7 @@ const responseClass = apiError ? 'api-result-errort' : 'api-result';
                 />
               <div>
               {apiResponse && <p className={responseClass}>{apiError ? apiError : apiResponse}</p>}
-              <button onClick={submitRequest} disabled={arabicFocused ? isArabicValid : true} className="button">Submit</button>
+              <button id="submitArabic" onClick={submitRequest} disabled={arabicFocused ? isArabicValid : true} className="button">Submit</button>
               </div>
             </div>
         )}

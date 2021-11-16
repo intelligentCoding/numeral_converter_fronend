@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #3f3f3f;
+}
+
+.app {
+  width: 90%;
+  max-width: 43rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: white;
+  margin: 3rem auto;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .form-css {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  .invalid input {
+    border: 1px solid #b40e0e;
+    background-color: #fddddd;
+    display: flex;
+  }
+  
+  .invalid input:focus {
+    border: 1px solid  #ff8800;
+    background-color: #fbe8d2;
+  }
+
+
+  .button {
+    width: 100%;
+    background-color: #ff0ef3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+      background-color: #b40e0e;
+  }
+
+  .button:disabled{
+    background-color: #ccc;
+    color: #292929;
+    border-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .error-text {
+    color: #b40e0e;
+  }
+
+  .api-result {
+    color: #7c795d; 
+    font-family: 'Trocchi', serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0;
+  }
+  .api-result-error {
+    color: #b40e0e; 
+    font-family: 'Trocchi', serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0;
+  }
